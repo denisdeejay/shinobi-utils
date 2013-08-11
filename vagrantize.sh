@@ -57,25 +57,32 @@ fi
 if [[ -L "$WWW_ROOT/$1" ]]; then
 
         echo "-> $MSG_INFO Found $1, processing..."
+        cd -P $WWW_ROOT/$1
+
+        WEB_ID=${PWD##*/}
+        cd ..
+        WEB_PWD=$PWD
+
+        echo $WEB_ID
+        echo $WEB_PWD
 
         echo "-> $MSG_INFO Removing immutable flag attribute..."
-        cd -P $WWW_ROOT/$1
-        cd ..
-        chattr -i web*
+        chattr -i $WEB_PWD/$WEB_ID
 
-        echo "-> $MSG_INFO Making $VAGRANT_ROOT/$1..."
+        echo "-> $MSG_INFO Making directory $VAGRANT_ROOT/$1..."
         mkdir $VAGRANT_ROOT/$1
 
         echo "-> $MSG_INFO Copying $1 to $VAGRANT_ROOT/$1..."
         cd -P $WWW_ROOT/$1
         cp -prf * $VAGRANT_ROOT/$1
 
-        echo "-> $MSG_INFO Removing original directory..."
+        echo "-> $MSG_INFO Removing original directories..."
         rm -rf $WWW_ROOT/$1
+        mv $WEB_PWD/$WEB_ID $WEB_PWD/$WEB_ID.bak
 
-        echo "-> $MSG_INFO Creating new symlink..."
-        cd $WWW_ROOT
-        ln -s $VAGRANT_ROOT/$1 .
+        echo "-> $MSG_INFO Creating new symlinks..."
+        ln -s $VAGRANT_ROOT/$1 $WWW_ROOT/$1
+        ln -s $VAGRANT_ROOT/$1 $WEB_PWD/$WEB_ID
 
         echo "-> $MSG_INFO $1 successfully vagrantized!"
         echo "-> $MSG_DONE"
