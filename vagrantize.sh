@@ -16,6 +16,7 @@ echo "-> Vagrantize $VERSION"
 if [[ -z "$1" ]]; then
         echo "-> $MSG_ERR Please pass ispconfig domain name, eg ./vagrantize example.com"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1;
 fi
 
@@ -24,6 +25,7 @@ if [[ "$(whoami)" != "root" ]]; then
 
         echo "-> $MSG_ERR Sorry, you are not root - sudo?"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1
 fi
 
@@ -31,6 +33,7 @@ fi
 if [[ ! -d "$VAGRANT_ROOT" ]]; then
         echo "-> $MSG_ERR $VAGRANT_ROOT doesn't exist"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1
 fi
 
@@ -38,6 +41,7 @@ fi
 if [[ -L "$VAGRANT_ROOT/$1" ]]; then
         echo "-> $MSG_ERR $VAGRANT_ROOT/$1 already exists"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1
 fi
 
@@ -45,6 +49,7 @@ fi
 if [[ -d "$VAGRANT_ROOT/$1" ]]; then
         echo "-> $MSG_ERR $VAGRANT_ROOT/$1 already exists"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1
 fi
 
@@ -74,10 +79,12 @@ if [[ -L "$WWW_ROOT/$1" ]]; then
 
         echo "-> $MSG_INFO $1 successfully vagrantized!"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1;
 else
         echo "-> $MSG_ERR Couldn't find ispconfig domain... ($1)"
         echo "-> $MSG_DONE"
+        echo ""
         exit 1;
 fi
 
