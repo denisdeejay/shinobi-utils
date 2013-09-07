@@ -48,4 +48,4 @@ The purpose of this is purely so www files are easily accessible from the host.
 
 #### The vagrantize script in the box is outdated, do this to update:
 
-	sudo rm /usr/local/bin/vagrantize ; sudo wget -O /usr/local/bin/vagrantize https://raw.github.com/ShinobiCorp/shinobi-utils/master/vagrantize.sh ; sudo chmod +x /usr/local/bin/vagrantize 
+	sudo rm /usr/local/bin/vagrantize ; sudo wget -O /usr/local/bin/vagrantize https://raw.github.com/ShinobiCorp/shinobi-utils/master/vagrant-ispconfig/vagrantize.sh ; sudo chmod +x /usr/local/bin/vagrantize 
