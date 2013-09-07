@@ -38,7 +38,7 @@ class application {
 
 		// Language
 		$language = 'language_'.$this->config->get_language();
-		$this->language = new $language();
+		$this->language = new $language($this->config->get_language());
 		unset($language);
 
 		// Dispatch
@@ -54,11 +54,29 @@ class application {
 		return $this->config;
 	}
 
+	public function get_language() {
+		return $this->language;
+	}
+
+	public function get_param($index) {
+		return $this->router->get_param($index);
+	}
+	
+	public function get_params() {
+		return $this->router->get_params();
+	}
+
+	public function get_router() {
+		return $this->router;
+	}
+
 	public function render_view($view, $data) {
 
 		$config = $this->config;
 		$lang = $this->language;
 		$router = $this->router;
+		$params = $this->router->get_params();
+		
 		$view = PATH_APP . '/views/' . $view . '.phtml';
 
 		ob_start();
