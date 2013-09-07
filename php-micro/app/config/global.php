@@ -37,6 +37,8 @@ class config_global {
 		'/demo'=>'default@demo'
 	);
 
+	protected $static_path;
+
 	public function config_global(){
 	}
 
@@ -64,6 +66,15 @@ class config_global {
 
 	public function get_routes() {
 		return $this->routes;
+	}
+
+	public function get_static_path() {
+		return $this->static_path;
+	}
+
+	public function set_static_path($static_path) {
+		$this->static_path = $static_path;
+		return $this->static_path;
 	}
 
 	public function __get($key)
