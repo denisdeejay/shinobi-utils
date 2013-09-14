@@ -15,7 +15,7 @@ A vagrant box pre-installed with the following:
 When creating new sites through ISPConfig you can to use 'vagrantize' to move the new site to the shared /vagrant directory.
 The purpose of this is purely so www files are easily accessible from the host.
 
-## A micro php framework
+## PHP Micro
 
 A micro sized PHP framework - just a personal experiment really...
 
