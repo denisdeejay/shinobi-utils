@@ -4,7 +4,7 @@
 
 A vagrant box pre-installed with the following:
 
-- ISPConfig 3.0.5.2 (Apache/Courier via https://github.com/dclardy64/ISPConfig-3-Debian-Installer)
+- ISPConfig 3.0.5.3 (Apache/Courier via https://github.com/dclardy64/ISPConfig-3-Debian-Installer)
 - Debian Wheezy
 - Node.js
 
@@ -12,7 +12,7 @@ A vagrant box pre-installed with the following:
 
 1. Install Virtual Box - https://www.virtualbox.org/
 2. Install Vagrant - http://www.vagrantup.com/
-3. vagrant box add dev-ispconfig https://googledrive.com/host/0B-Ale1bdCR9pUmN2bHRXVmt2RXM/dev-ispconfig-v1.box
+3. vagrant box add dev-ispconfig https://googledrive.com/host/0B-Ale1bdCR9pUmN2bHRXVmt2RXM/dev-ispconfig-v1.1.box
 4. mkdir -p ~/Vagrant/dev-ispconfig && cd $_;
 5. vagrant init dev-ispconfig
 6. vagrant up
@@ -30,7 +30,7 @@ A vagrant box pre-installed with the following:
 
 ## Default Apache ports
 
-For some reason we can't forward any port < 1000 with Vagrant or Virtual box, the following rules will fix that, but they will be lost at reboot.
+We can't forward any port < 1000 with Vagrant or Virtual box, the following rules will fix that, but they will be lost at reboot.
 
 	sudo ipfw add 100 fwd 127.0.0.1,8080 tcp from any to me 80
 	sudo ipfw add 101 fwd 127.0.0.1,8443 tcp from any to me 443
