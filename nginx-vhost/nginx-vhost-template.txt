@@ -1,49 +1,60 @@
 server {
-    server_name %DOMAIN%;
-    root %WWW_ROOT%/%DOMAIN%/web;
 
-    index index.php index.html;
+	server_name %DOMAIN%;
+	root %WWW_ROOT%/%DOMAIN%/web;
 
-    # serve static files directly
-    
-    location ~* \.(css|gif|ico|html|jpg|jpeg|js|png|svg|txt)$ {
-        access_log off;
-        expires max;
-    }
+	index index.php index.html;
 
-    # removes trailing slashes (prevents SEO duplicate content issues)
-    if (!-d $request_filename)
-    {
-        rewrite ^/(.+)/$ /$1 permanent;
-    }
+	# ssl as default (uncomment if required)
 
-    # enforce NO www
-    if ($host ~* ^www\.(.*))
-    {
-        set $host_without_www $1;
-        rewrite ^/(.*)$ $scheme://$host_without_www/$1 permanent;
-    }
+	#listen 80;
+	#listen [::]:80;
+	#listen 443 default ssl;
+	#ssl_certificate %WWW_ROOT%/%DOMAIN%/ssl/server.crt;
+	#ssl_certificate_key %WWW_ROOT%/%DOMAIN%/ssl/server.key;
+	#if ($ssl_protocol = "") {
+	#	rewrite ^   https://$server_name$request_uri? permanent;
+	#}
 
-    # unless the request is for a valid file (image, js, css, etc.), send to bootstrap
-    if (!-e $request_filename)
-    {
-        rewrite ^/(.*)$ /index.php?/$1 last;
-        break;
-    }
+	# serve static files directly
+	location ~* \.(css|gif|ico|html|jpg|jpeg|js|png|svg|txt)$ {
+		access_log off;
+		expires max;
+	}
 
-    # catch all
-    error_page 404 /index.php;
+	# removes trailing slashes (prevents SEO duplicate content issues)
+	if (!-d $request_filename)
+	{
+		rewrite ^/(.+)/$ /$1 permanent;
+	}
 
-    location ~ \.php$ {
-           fastcgi_split_path_info ^(.+\.php)(/.+)$;
-           # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+	# enforce NO www
+	if ($host ~* ^www\.(.*))
+	{
+		set $host_without_www $1;
+		rewrite ^/(.*)$ $scheme://$host_without_www/$1 permanent;
+	}
 
-           # With php5-fpm:
-           fastcgi_pass unix:/var/run/php5-fpm.sock;
-           fastcgi_index index.php;
-           include fastcgi_params;
-    }
+	# unless the request is for a valid file (image, js, css, etc.), send to bootstrap
+	if (!-e $request_filename)
+	{
+		rewrite ^/(.*)$ /index.php?/$1 last;
+		break;
+	}
 
-    access_log %WWW_ROOT%/%DOMAIN%/log/access.log;
-    error_log  %WWW_ROOT%/%DOMAIN%/log/error.log;
+	# catch all
+	error_page 404 /index.php;
+
+	location ~ \.php$ {
+		   fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		   # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+
+		   # With php5-fpm:
+		   fastcgi_pass unix:/var/run/php5-fpm.sock;
+		   fastcgi_index index.php;
+		   include fastcgi_params;
+	}
+
+	access_log %WWW_ROOT%/%DOMAIN%/log/access.log;
+	error_log  %WWW_ROOT%/%DOMAIN%/log/error.log;
 }

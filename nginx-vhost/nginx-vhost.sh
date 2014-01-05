@@ -86,6 +86,7 @@ fi
 mkdir -p $WWW_ROOT/$DOMAIN
 mkdir $WWW_ROOT/$DOMAIN/web
 mkdir $WWW_ROOT/$DOMAIN/private
+mkdir $WWW_ROOT/$DOMAIN/ssl
 mkdir $WWW_ROOT/$DOMAIN/log
 mkdir $WWW_ROOT/$DOMAIN/
 echo "Welcome to $DOMAIN" > $WWW_ROOT/$DOMAIN/web/index.html
