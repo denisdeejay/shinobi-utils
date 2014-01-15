@@ -40,7 +40,7 @@ We can't forward any port < 1000 with Vagrant or Virtual box, the following rule
 
 ## Further setup for OSX (Optional)
 
-We like to set up the following aliases to assist with easy vagrant up, halt and ssh and port forwarding of ports 80 & 443!
+We like to set up the following aliases to assist with easy vagrant up, halt, ssh and port forwarding of ports 80 & 443!
 
 Add the following to your ~/.profile
 
