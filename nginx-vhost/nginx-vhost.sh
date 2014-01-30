@@ -84,12 +84,14 @@ fi
 
 # Create vhost directories
 mkdir -p $WWW_ROOT/$DOMAIN
-mkdir $WWW_ROOT/$DOMAIN/web
-mkdir $WWW_ROOT/$DOMAIN/private
+
+mkdir $WWW_ROOT/$DOMAIN/site
+mkdir $WWW_ROOT/$DOMAIN/site/web
+
 mkdir $WWW_ROOT/$DOMAIN/ssl
 mkdir $WWW_ROOT/$DOMAIN/log
 
-echo "Welcome to $DOMAIN" > $WWW_ROOT/$DOMAIN/web/index.html
+echo "Welcome to $DOMAIN" > $WWW_ROOT/$DOMAIN/site/web/index.html
 chown -R www-data:www-data $WWW_ROOT/$DOMAIN
 
 # Create vhost record from template
