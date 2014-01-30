@@ -17,4 +17,4 @@ The purpose of this is purely so www files are easily accessible from the host.
 
 ## Nginx-Vhosts
 
-A simple script to create a basic VHOST for nginx.
+A simple script to create a basic VHOST from a template for nginx.
