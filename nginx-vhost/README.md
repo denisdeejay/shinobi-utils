@@ -10,7 +10,7 @@ A simple script to create a basic VHOST for nginx.
 4. sudo nginx-vhost.sh example.com will create a vhost
 
 
-# Example Ubuntu 12 nginx/fpm/git-deploy setup
+## Example Ubuntu 12 nginx/fpm/git-deploy setup
 
 1. Install nginx/php5-fpm
 	1. `sudo apt-get install nginx git-core php5-fpm`
