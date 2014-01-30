@@ -24,7 +24,7 @@ A simple script to create a basic VHOST for nginx.
 
 3. Configure php5-fpm
 	1. `sudo pico /etc/php5/fpm/php.ini` set `cgi.fix_pathinfo=0`
-	2. `sudo /etc/php5/fpm/pool.d/www.conf` set `;listen = /var/run/php5-fpm.sock` to `listen = 127.0.0.1:9000`
+	2. `sudo pico /etc/php5/fpm/pool.d/www.conf` set `;listen = /var/run/php5-fpm.sock` to `listen = 127.0.0.1:9000`
 	3. `sudo /etc/init.d/php5-fpm reload`
 
 4. Install shinobi-utils/nginx-vhost
@@ -34,9 +34,9 @@ A simple script to create a basic VHOST for nginx.
 	4. `sudo chmod +x nginx-vhost*`
 
 5. Attach EBS storage (Optional)
-	1. `mkfs.ext4 /dev/xvdf` (Where xvdf is device name)
-	2. `mkdir /mnt/www`
-	3. `echo "/dev/xvdf /mnt/www auto noatime 0 0" | sudo tee -a /etc/fstab`
-	4. `mount /mnt/www`
+	1. `sudo mkfs.ext4 /dev/xvdf` (Where xvdf is device name)
+	2. `sudo mkdir /mnt/www`
+	3. `sudo echo "/dev/xvdf /mnt/www auto noatime 0 0" | sudo tee -a /etc/fstab`
+	4. `sudo mount /mnt/www`
 
 
