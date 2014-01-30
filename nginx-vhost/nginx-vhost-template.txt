@@ -1,7 +1,7 @@
 server {
 
 	server_name %DOMAIN%;
-	root %WWW_ROOT%/%DOMAIN%/web;
+	root %WWW_ROOT%/%DOMAIN%/site/web;
 
 	index index.php index.html;
 
