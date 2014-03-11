@@ -39,4 +39,11 @@ A simple script to create a basic VHOST for nginx.
 	3. `sudo echo "/dev/xvdf /mnt/www auto noatime 0 0" | sudo tee -a /etc/fstab`
 	4. `sudo mount /mnt/www`
 
+6. Update npm/node
+	1. sudo apt-get update
+	2. sudo apt-get install -y python-software-properties python g++ make
+	3. sudo add-apt-repository ppa:chris-lea/node.js
+	4. sudo apt-get update
+	5. sudo apt-get install nodejs
+
 
