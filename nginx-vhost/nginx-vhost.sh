@@ -2,8 +2,9 @@
 
 VERSION=v0.1
 
-BASEDIR=$(dirname $0)
+BASE_DIR=$(dirname $0)
 DOMAIN=$1
+PUBLIC_DIR=public
 
 # Full path to vhost available - you should create this if it doesn't exist.
 VHOST_AVAILABLE=/etc/nginx/sites-available
@@ -19,7 +20,7 @@ VHOST_CHOWN_GROUP=www-data
 VHOST_ENABLED=/etc/nginx/sites-enabled
 
 # Place templatae in same directory as this script.
-VHOST_TEMPLATE=$BASEDIR/nginx-vhost-template.txt
+VHOST_TEMPLATE=$BASE_DIR/nginx-vhost-template.txt
 
 # Vhost Directory Root.
 WWW_ROOT=/var/www
@@ -34,15 +35,14 @@ echo "-> nginx-vhost $VERSION"
 
 # Check for domain name parameter
 if [[ -z "$DOMAIN" ]]; then
-	echo "-> $MSG_ERR Please pass domain name, eg ./nginx-vhost example.com"
+	echo "-> $MSG_ERR Please pass domain name, eg ./nginx-vhost.sh example.com"
 	echo "-> $MSG_DONE"
 	echo ""
-	exit 1;
+	exit 1
 fi
 
 # Check for sudo
 if [[ "$(whoami)" != "root" ]]; then
-
 	echo "-> $MSG_ERR Sorry, you are not root - try sudo?"
 	echo "-> $MSG_DONE"
 	echo ""
@@ -51,11 +51,10 @@ fi
 
 # Check for VHOST_DIR
 if [[ ! -d "$VHOST_AVAILABLE" ]]; then
-	read -p "-> MSG_ERR $VHOST_AVAILABLE doesn't exist. Create it?" -n 1 -r
+	read -p "-> MSG_ERR $VHOST_AVAILABLE doesn't exist. Create it? (y/n) " -n 1 -r
 	echo ""
 
-	if [[ $REPLY =~ ^[Yy]$ ]]
-	then
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		mkdir -p $VHOST_AVAILABLE
 	else
 		echo "-> $MSG_DONE"
@@ -66,11 +65,10 @@ fi
 
 # Check for VHOST_DIR
 if [[ ! -d "$VHOST_ENABLED" ]]; then
-	read -p "-> MSG_ERR $VHOST_ENABLED doesn't exist. Create it?" -n 1 -r
+	read -p "-> MSG_ERR $VHOST_ENABLED doesn't exist. Create it? (y/n) " -n 1 -r
 	echo ""
 
-	if [[ $REPLY =~ ^[Yy]$ ]]
-	then
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		mkdir -p $VHOST_ENABLED
 	else
 		echo "-> $MSG_DONE"
@@ -113,12 +111,11 @@ fi
 
 # Create Vhost directories
 mkdir -p $WWW_ROOT/$DOMAIN
-mkdir $WWW_ROOT/$DOMAIN/site
-mkdir $WWW_ROOT/$DOMAIN/site/web
+mkdir -p $WWW_ROOT/$DOMAIN/site/$PUBLIC_DIR
 mkdir $WWW_ROOT/$DOMAIN/ssl
 mkdir $WWW_ROOT/$DOMAIN/log
 
-echo "Welcome to $DOMAIN" > $WWW_ROOT/$DOMAIN/site/web/index.html
+echo "Welcome to $DOMAIN" > $WWW_ROOT/$DOMAIN/site/$PUBLIC_DIR/index.html
 if [ "$VHOST_CHOWN" = true] chown -R $VHOST_CHOWN_USER:$VHOST_CHOWN_GROUP $WWW_ROOT/$DOMAIN
 
 # Create vhost record from template
@@ -127,4 +124,4 @@ cp -prf $VHOST_AVAILABLE/$DOMAIN $VHOST_ENABLED/$DOMAIN
 
 echo "-> $MSG_INFO nginx-vhost for $1 successfully created!"
 echo "-> $MSG_DONE"
-exit 1;
+exit 1
