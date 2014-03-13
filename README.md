@@ -10,6 +10,17 @@ A vagrant box pre-installed with the following:
 - Debian Wheezy
 - Node.js
 
+## vagrant-nginx-php
+
+A vagrant box with nginx php mysql
+
+- Ubuntu Precise 12.04 x64
+- PHP 5.4
+- Composer
+- MySQL
+- MongoDB
+- Redis
+
 ## Vagrantize
 
 When creating new sites through ISPConfig you can to use 'vagrantize' to move the new site to the shared /vagrant directory.
