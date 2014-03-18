@@ -60,7 +60,7 @@ server {
 		   fastcgi_index index.php;
 		   include fastcgi_params;
 
-		   fastcgi_param SCRIPT_FILENAME $WWW_ROOT/$DOMAIN/site/$PUBLIC_DIR/$fastcgi_script_name;
+		   fastcgi_param SCRIPT_FILENAME %WWW_ROOT%/%DOMAIN%/site/%PUBLIC_DIR%/$fastcgi_script_name;
 	}
 
 	access_log %WWW_ROOT%/%DOMAIN%/log/access.log;
