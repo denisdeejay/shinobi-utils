@@ -119,9 +119,9 @@ echo "Welcome to $DOMAIN" > $WWW_ROOT/$DOMAIN/site/$PUBLIC_DIR/index.html
 #if [ "$VHOST_CHOWN" = true] chown -R $VHOST_CHOWN_USER:$VHOST_CHOWN_GROUP $WWW_ROOT/$DOMAIN
 
 # Create vhost record from template
-sed -e "s;%WWW_ROOT%;$WWW_ROOT;" -e "s;%DOMAIN%;$DOMAIN;" -e "s:%PUBLIC_DIR%;$PUBLIC_DIR" $VHOST_TEMPLATE > $VHOST_AVAILABLE/$DOMAIN.conf
+sed -e "s;%WWW_ROOT%;$WWW_ROOT;" -e "s;%DOMAIN%;$DOMAIN;" -e "s;%PUBLIC_DIR%;$PUBLIC_DIR;" $VHOST_TEMPLATE > $VHOST_AVAILABLE/$DOMAIN.conf
 # cp -prf $VHOST_AVAILABLE/$DOMAIN.conf $VHOST_ENABLED/$DOMAIN.conf
-ln -s $VHOST_ENABLED/$DOMAIN.conf $VHOST_AVAILABLE/$DOMAIN.conf
+ln -s $VHOST_AVAILABLE/$DOMAIN.conf $VHOST_ENABLED/$DOMAIN.conf
 
 echo "-> $MSG_INFO nginx-vhost for $1 successfully created!"
 echo "-> $MSG_DONE"
