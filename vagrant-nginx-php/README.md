@@ -7,7 +7,7 @@
 
     ```
     config.bindfs.bind_folder "/var/www", "/www",
-    :perms           => "u=rwx:g=rwx:o=rwx",
+    :perms           => "u=rwx:g=rwx:o=rwx"
     ```
     
 5. `vagrant up` and `vagrant ssh` into your newly running vagrant box
