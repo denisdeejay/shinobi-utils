@@ -45,3 +45,9 @@
     MSG_OK=OK:
     MSG_DONE=DONE...
     ```
+
+8. Install NPM/Node
+    1. `sudo apt-get install python-software-properties python g++ make`
+    2. `sudo add-apt-repository ppa:chris-lea/node.js`
+    3. `sudo apt-get update`
+    4. `sudo apt-get install nodejs`
