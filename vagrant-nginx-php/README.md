@@ -11,7 +11,7 @@
     ```
     
 5. `vagrant up` and `vagrant ssh` into your newly running vagrant box
-6. `cd /usr/local/bin;sudo curl -O https://raw.github.com/Shinobi-Corp/shinobi-utils/master/nginx-vhost/nginx-vhost.sh;sudo curl -O https://raw.github.com/Shinobi-Corp/shinobi-utils/master/nginx-vhost/nginx-vhost-template.txt
+6. `cd /usr/local/bin;sudo curl -OL https://raw.github.com/Shinobi-Corp/shinobi-utils/master/nginx-vhost/nginx-vhost.sh;sudo curl -OL https://raw.github.com/Shinobi-Corp/shinobi-utils/master/nginx-vhost/nginx-vhost-template.txt
 ;sudo chmod +x nginx-vhost*`
 
 7. Edit nginx-vhost.sh to contain the following:
