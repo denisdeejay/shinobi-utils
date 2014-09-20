@@ -1,8 +1,12 @@
 # shinobi-utils
 
-A collection of utils that I've made along the way...
+A collection of utils that we've made along the way...
 
-## vagrant-ispconfig
+## Nginx-Vhosts
+
+A simple script to create a basic VHOST from a template for nginx.
+
+## vagrant-ispconfig - not maintained
 
 A vagrant box pre-installed with the following:
 
@@ -10,7 +14,7 @@ A vagrant box pre-installed with the following:
 - Debian Wheezy
 - Node.js
 
-## vagrant-nginx-php
+## vagrant-nginx-php - not maintained
 
 A vagrant box with nginx php mysql
 
@@ -21,11 +25,7 @@ A vagrant box with nginx php mysql
 - MongoDB
 - Redis
 
-## Vagrantize
+## Vagrantize - not maintained
 
 When creating new sites through ISPConfig you can to use 'vagrantize' to move the new site to the shared /vagrant directory.
 The purpose of this is purely so www files are easily accessible from the host.
-
-## Nginx-Vhosts
-
-A simple script to create a basic VHOST from a template for nginx.
